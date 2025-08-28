@@ -86,7 +86,8 @@ void demo() {
 
     // Generate a random hexadecimal number for the demo
     string randomHex = "";
-    int hexLength = rand() % 4 + 1; // Random hex length between 1 and 4
+     // Random hex length between 1 and 4
+    int hexLength = rand() % 4 + 1;
     string hex_chars = "0123456789ABCDEF";
     for (int i = 0; i < hexLength; ++i) {
         randomHex += hex_chars[rand() % 16];
