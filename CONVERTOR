@@ -1,0 +1,74 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Function to convert decimal to binary
+void decimalToBinary(int decimal) {
+    // Array to store binary number
+    int binary[32];
+    // Index for storing binary digits
+    int index = 0;   
+
+    // Handle the case when decimal is 0
+    if (decimal == 0) {
+        cout << "Binary: 0" << endl;
+        return;
+    }
+
+    // Convert decimal to binary
+    while (decimal > 0) {
+        // Store remainder
+        binary[index] = decimal % 2;
+        // Divide by 2
+        decimal = decimal / 2;       
+        index++;
+    }
+
+    // Print the binary in reverse order
+    cout << "Binary: ";
+    for (int i = index - 1; i >= 0; i--) {
+        cout << binary[i];
+    }
+    cout << endl;
+}
+
+// Function to convert binary to decimal
+int binaryToDecimal(int binary) {
+    int decimal = 0;
+    int power = 0;
+
+    // Convert binary to decimal by summing powers of 2
+    while (binary > 0) {
+        int last_digit = binary % 10;   // Get last binary digit
+        decimal += last_digit * pow(2, power);  // Add the corresponding power of 2
+        binary = binary / 10;  // Remove last binary digit
+        power++;               // Move to the next power of 2
+    }
+
+    return decimal;
+}
+
+int main() {
+    int choice;
+    cout << "Choose conversion type:" << endl;
+    cout << "1. Decimal to Binary" << endl;
+    cout << "2. Binary to Decimal" << endl;
+    cin >> choice;
+
+    if (choice == 1) {
+        int decimal;
+        cout << "Enter a decimal number: ";
+        cin >> decimal;
+        decimalToBinary(decimal);  // Convert decimal to binary
+    } else if (choice == 2) {
+        int binary;
+        cout << "Enter a binary number: ";
+        cin >> binary;
+        int decimal = binaryToDecimal(binary);  // Convert binary to decimal
+        cout << "Decimal: " << decimal << endl;
+    } else {
+        cout << "Invalid choice!" << endl;
+    }
+
+    return 0;
+}
